@@ -1,0 +1,4 @@
+.ccls-cache/
+**/build/mk
+**/*.o 
+**/*.bin
