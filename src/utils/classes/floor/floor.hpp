@@ -6,7 +6,6 @@
 class Floor{
     private:
         unsigned int planeVBO,planeVAO;
-        glm::mat4 lightSpaceMatrix;
         unsigned int woodTexture ;
         Shader *shader;
         Camera *camera;

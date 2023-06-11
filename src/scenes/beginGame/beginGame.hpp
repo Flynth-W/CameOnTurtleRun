@@ -1,9 +1,9 @@
 #pragma once
 #include "../stage.hpp"
 #include "../../utils/classes/camera/camera.hpp"
-
-
+#include "../../utils/classes/floor/floor.hpp"
 #include "../../utils/classes/collision.hpp"
+#include "../../utils/classes/turtle/turtle.hpp"
 
 class BeginGame:public Stage{
     private:
@@ -14,6 +14,8 @@ class BeginGame:public Stage{
         Stages stage;
         Camera *camera;
         CollisionsHandler handlerCollision;
+        Floor floor;
+        Turtle turtle;
     public:
         void Init()   override;
         void Update() override;
