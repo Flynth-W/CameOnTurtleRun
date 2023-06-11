@@ -54,7 +54,7 @@ void Turtle::view(){
 }
 
 void Turtle::Init(){
-    this->position=new glm::vec3(0.0);
+    this->position=new glm::vec3(0.0,0.0,39.0);
 
     this->drawTurtle.setCamera(this->camera);
     this->drawTurtle.Init(this->position);
