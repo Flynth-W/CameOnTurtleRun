@@ -4,13 +4,15 @@ void Floor::Init(Camera *camera_){
     camera = camera_;
     float planeVertices[] = {
         // positions              // texcoords
-         10.0f, -0.5f,  10.0f,    10.0f,  0.0f,
-        -10.0f, -0.5f,  10.0f,     0.0f,  0.0f,
-        -10.0f, -0.5f, -10.0f,     0.0f, 10.0f,
+         20.0f, -0.5f,  40.0f,    10.0f,  0.0f,
+        -20.0f, -0.5f,  40.0f,     0.0f,  0.0f,
+        
+        -20.0f, -0.5f, -40.0f,     0.0f, 10.0f,
 
-         10.0f, -0.5f,  10.0f,    10.0f,  0.0f,
-        -10.0f, -0.5f, -10.0f,     0.0f, 10.0f,
-         10.0f, -0.5f, -10.0f,    10.0f, 10.0f
+         20.0f, -0.5f,  40.0f,    10.0f,  0.0f,
+        
+        -20.0f, -0.5f, -40.0f,     0.0f, 10.0f,
+         20.0f, -0.5f, -40.0f,    10.0f, 10.0f
     };
     // plane VAO
     glGenVertexArrays(1, &planeVAO);
