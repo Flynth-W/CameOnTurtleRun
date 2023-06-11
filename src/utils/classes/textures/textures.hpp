@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../shader.hpp"
 #include "stb/stb_image.h"
 #include "stb/stb_image_resize.h"
