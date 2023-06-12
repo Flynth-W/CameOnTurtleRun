@@ -1,0 +1,22 @@
+= Came on turtle run
+
+    just go to the square 
+
+image::./turtle.1.png[Sunset]
+image::./turtle.2.png[Sunset]
+== Libraries
+
+*   GLFW
+*   OpenGl/glew
+*   glm
+*   irrKlang ( audio )
+
+== Compile
+
+supported for arch linux
+
+    install packages:
+        $ pacman -S glew glm glfw-x11 
+    Compile with Makefile
+        $ cd ./build/
+        $ make 
