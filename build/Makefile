@@ -12,7 +12,8 @@ OBJS = ../src/main.o \
 	   ../src/utils/classes/Draw/turtle/turtle.o  \
 	   ../src/utils/classes/Draw/turtle/body/body.o \
 	   ../src/utils/classes/Draw/turtle/limb/limb.o \
-	   ../src/utils/classes/Draw/turtle/head/head.o
+	   ../src/utils/classes/Draw/turtle/head/head.o \
+	   ../src/utils/classes/Draw/square/square.o 
 
 
 FILE_BIN = Asteroid.bin
