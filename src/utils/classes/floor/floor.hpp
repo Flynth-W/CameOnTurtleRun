@@ -5,11 +5,12 @@
 
 class Floor{
     private:
-        unsigned int planeVBO,planeVAO;
+        unsigned int VBO,VAO;
         unsigned int woodTexture ;
         Shader *shader;
         Camera *camera;
     public:
         void Init(Camera *camera_);
         void Render();
+        void setBackgroundColor(glm::vec3 color);
 };
