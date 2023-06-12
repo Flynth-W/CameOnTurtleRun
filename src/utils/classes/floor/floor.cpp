@@ -4,30 +4,42 @@ void Floor::Init(Camera *camera_){
     camera = camera_;
     float planeVertices[] = {
         // positions              // texcoords
-         20.0f, -0.5f,  40.0f,    10.0f,  0.0f,
-        -20.0f, -0.5f,  40.0f,     0.0f,  0.0f,
-        
-        -20.0f, -0.5f, -40.0f,     0.0f, 10.0f,
+         20.0f, -0.5f,  40.0f,     10.0f, 10.0f,
+        -20.0f, -0.5f,  40.0f,     0.0f, 10.0f,
+        -20.0f, -0.5f, -40.0f,     0.0f, 0.0f,
 
-         20.0f, -0.5f,  40.0f,    10.0f,  0.0f,
-        
-        -20.0f, -0.5f, -40.0f,     0.0f, 10.0f,
-         20.0f, -0.5f, -40.0f,    10.0f, 10.0f
+         20.0f, -0.5f,  40.0f,    10.0f, 10.0f,
+        -20.0f, -0.5f, -40.0f,    0.0f, 0.0f,
+         20.0f, -0.5f, -40.0f,    10.0f, 0.0f
     };
-    // plane VAO
-    glGenVertexArrays(1, &planeVAO);
-    glGenBuffers(1, &planeVBO);
-    glBindVertexArray(planeVAO);
-    glBindBuffer(GL_ARRAY_BUFFER, planeVBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(planeVertices), planeVertices, GL_STATIC_DRAW);
-    glEnableVertexAttribArray(0);
+    float vertex[] = {
+        -20.0f, -0.5f, -40.0f,  0.0f, 0.0f,
+         20.0f, -0.5f, -40.0f,  1.0f, 0.0f,
+         20.0f, -0.5f,  40.0f,  1.0f, 1.0f,
+
+         20.0f, -0.5,   40.0f,  1.0f, 1.0f,
+        -20.0f, -0.5f,  40.0f,  0.0f, 1.0f,
+        -20.0f, -0.5,  -40.0f,  0.0f, 0.0f,
+
+    };
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+
+    glBindVertexArray(VAO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertex), vertex, GL_STATIC_DRAW);
+
+    // position attribute
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // texture cords attribute
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     
-    this->shader= new Shader("./shader/floor/floor.vs" ,"./shader/floor/floor.fs");
+    this->shader= new Shader("./shader/square/floor.vs" ,"./shader/square/floor.fs");
     shader->use();
-    woodTexture = Textures::loadTexture("./img/wood.png");
+    this->woodTexture= Textures::loadTexture("./img/white.jpg");
     //woodTexture = loadTexture("./img/wood.png", false) ;
     this->shader->setInt("texture1", 0);
 }
@@ -49,7 +61,12 @@ void Floor::Render(){
 
     
     // floor
-    glBindVertexArray(planeVAO);
+    glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0, 6);
+    glBindVertexArray(0);
 
+}
+void Floor::setBackgroundColor(glm::vec3 color){
+    this->shader->use();
+    this->shader->setVec3("color", color);
 }
